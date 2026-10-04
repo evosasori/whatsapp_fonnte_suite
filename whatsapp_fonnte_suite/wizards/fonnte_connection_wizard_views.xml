@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="fonnte_connection_wizard_view_form" model="ir.ui.view">
+            <field name="name">fonnte.connection.wizard.view.form</field>
+            <field name="model">fonnte.connection.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Hubungkan WhatsApp Fonnte">
+                    <field name="status_koneksi" invisible="1"/>
+                    <div class="alert alert-success text-center" role="alert" invisible="status_koneksi != 'connected'">
+                        <h4><i class="fa fa-check-circle"></i> WhatsApp Berhasil Terhubung!</h4>
+                        <p class="mb-0">Perangkat WhatsApp Anda sudah aktif dan siap mengirim pesan.</p>
+                    </div>
+
+                    <div class="alert alert-info text-center" role="alert" invisible="status_koneksi == 'connected'">
+                        <p class="mb-0"><field name="keterangan" readonly="1"/></p>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center my-4" invisible="not qr_code or status_koneksi == 'connected'">
+                        <div class="p-3 bg-white border rounded shadow-sm text-center" style="max-width: 320px;">
+                            <field name="qr_code" widget="image" style="width: 280px; height: 280px; object-fit: contain; image-rendering: pixelated; margin: 0 auto; display: block;"/>
+                            <div class="text-muted small mt-2">
+                                <i class="fa fa-qrcode me-1"/> Pindai QR Code dengan aplikasi WhatsApp
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer>
+                        <button name="action_check_connection" string="Konfirmasi / Cek Koneksi" type="object" class="btn-primary" icon="fa-check"/>
+                        <button name="action_refresh_qr" string="Muat Ulang QR" type="object" class="btn-secondary" icon="fa-refresh" invisible="status_koneksi == 'connected'"/>
+                        <button string="Tutup" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

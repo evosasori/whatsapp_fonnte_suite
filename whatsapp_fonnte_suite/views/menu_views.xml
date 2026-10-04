@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Root Menu WhatsApp -->
+        <menuitem id="whatsapp_fonnte_menu_root"
+                  name="WhatsApp"
+                  web_icon="whatsapp_fonnte_suite,static/description/icon.png"
+                  sequence="25"/>
+
+        <!-- Submenu Konfigurasi Gateway -->
+        <menuitem id="fonnte_configuration_menu"
+                  name="Konfigurasi Gateway"
+                  parent="whatsapp_fonnte_menu_root"
+                  action="fonnte_configuration_action"
+                  sequence="10"/>
+
+        <!-- Submenu Template Pesan -->
+        <menuitem id="fonnte_template_menu"
+                  name="Template Pesan"
+                  parent="whatsapp_fonnte_menu_root"
+                  action="fonnte_template_action"
+                  sequence="20"/>
+
+        <!-- Submenu Validasi Nomor -->
+        <menuitem id="fonnte_validate_menu"
+                  name="Validasi Nomor WA"
+                  parent="whatsapp_fonnte_menu_root"
+                  action="fonnte_validate_wizard_action"
+                  sequence="30"/>
+    </data>
+</odoo>

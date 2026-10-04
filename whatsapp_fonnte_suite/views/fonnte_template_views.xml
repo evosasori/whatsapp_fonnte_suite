@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record id="fonnte_template_view_tree" model="ir.ui.view">
+            <field name="name">fonnte.template.view.tree</field>
+            <field name="model">fonnte.template</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="model_id"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="fonnte_template_view_form" model="ir.ui.view">
+            <field name="name">fonnte.template.view.form</field>
+            <field name="model">fonnte.template</field>
+            <field name="arch" type="xml">
+                <form string="Template Pesan WhatsApp">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Contoh: Konfirmasi Sales Order"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code" placeholder="Contoh: wa_so_confirm"/>
+                                <field name="model_id" options="{'no_create': True}"/>
+                                <field name="model" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="active" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+
+                        <div class="alert alert-info" role="alert">
+                            <strong>Panduan Variabel Dinamis:</strong>
+                            <p class="mb-0">
+                                Gunakan <code>{{self.nama_field}}</code> untuk menyisipkan nilai dari dokumen. Contoh:
+                                <br/>• <code>{{self.name}}</code> : Nomor Dokumen
+                                <br/>• <code>{{self.partner_id.name}}</code> : Nama Pelanggan / Partner
+                                <br/>• <code>{{self.env.user.name}}</code> : Nama Pengguna Odoo yang sedang aktif
+                            </p>
+                        </div>
+
+                        <group string="Konten Pesan">
+                            <field name="body" nolabel="1" placeholder="Tulis template pesan di sini..."/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="fonnte_template_action" model="ir.actions.act_window">
+            <field name="name">Template Pesan</field>
+            <field name="res_model">fonnte.template</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Buat template pesan WhatsApp pertama Anda!
+                </p>
+                <p>
+                    Template pesan memudahkan pengguna mengirimkan notifikasi standar untuk Sales Order, Faktur, atau Pengiriman Barang.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

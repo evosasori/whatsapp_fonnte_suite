@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WhatsApp Fonnte Suite &amp; Chatter</title>
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #333; line-height: 1.6; padding: 20px;">
+
+    <div style="text-align: center; margin-bottom: 40px; padding: 30px; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <h1 style="font-size: 32px; margin-bottom: 10px; font-weight: 700;">WhatsApp Fonnte Suite &amp; Chatter</h1>
+        <p style="font-size: 18px; margin: 0; opacity: 0.95;">Integrasi Resmi Fonnte WhatsApp Gateway pada Chatter Dokumen Odoo 18</p>
+        <span style="display: inline-block; margin-top: 15px; background: rgba(255,255,255,0.25); padding: 5px 15px; border-radius: 20px; font-size: 13px; font-weight: 600;">Odoo 18 Community &amp; Enterprise Ready</span>
+    </div>
+
+    <div style="max-width: 900px; margin: 0 auto;">
+        <h2 style="color: #128C7E; border-bottom: 2px solid #25D366; padding-bottom: 8px;">✨ Fitur Unggulan</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 25px 0;">
+            <div style="padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background: #fafafa;">
+                <h3 style="margin-top: 0; color: #075E54;">💬 Tombol WhatsApp di Chatter</h3>
+                <p style="font-size: 14px; color: #555;">Kirim pesan WhatsApp langsung dari form dokumen apa pun (Sales Order, Invoice, PO, Stock Picking) cukup dengan satu klik di samping tombol Activities.</p>
+            </div>
+
+            <div style="padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background: #fafafa;">
+                <h3 style="margin-top: 0; color: #075E54;">📎 Kirim Dokumen &amp; PDF</h3>
+                <p style="font-size: 14px; color: #555;">Mendukung pengiriman file PDF faktur atau dokumen gambar melalui direct multipart binary upload yang bekerja sempurna di server lokal maupun cloud.</p>
+            </div>
+
+            <div style="padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background: #fafafa;">
+                <h3 style="margin-top: 0; color: #075E54;">🔍 Cek Device &amp; Validasi Nomor</h3>
+                <p style="font-size: 14px; color: #555;">Pantau status device, sisa kuota, dan masa aktif paket Fonnte secara langsung, serta validasi nomor pelanggan apakah terdaftar di WhatsApp.</p>
+            </div>
+
+            <div style="padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background: #fafafa;">
+                <h3 style="margin-top: 0; color: #075E54;">📝 Template Pesan Dinamis</h3>
+                <p style="font-size: 14px; color: #555;">Buat template pesan fleksibel menggunakan variabel Odoo seperti <code>{{self.name}}</code> dan <code>{{self.partner_id.name}}</code>.</p>
+            </div>
+        </div>
+
+        <div style="margin: 25px 0; padding: 18px; background: #fff3cd; border: 1px solid #ffeeba; border-left: 5px solid #ffc107; border-radius: 6px; color: #856404;">
+            <h4 style="margin-top: 0; color: #856404;"><i class="fa fa-exclamation-triangle"></i> Sanggahan &amp; Batasan Tanggung Jawab (Disclaimer Anti-Spam)</h4>
+            <p style="font-size: 13.5px; margin-bottom: 8px;">
+                Modul ini menggunakan layanan gateway pihak ketiga tidak resmi (<em>Unofficial API via Fonnte.com</em>). Pengembang modul <strong>TIDAK BERTANGGUNG JAWAB</strong> atas segala bentuk pemblokiran nomor (<em>banned / suspend</em>), laporan spam dari penerima, atau pembatasan akun WhatsApp oleh Meta Inc.
+            </p>
+            <p style="font-size: 13.5px; margin: 0;">
+                Pengguna bertanggung jawab penuh atas etika dan kepatuhan nomor yang didaftarkan. Dilarang keras melakukan spamming atau broadcast ke nomor tanpa persetujuan (<em>opt-in</em>).
+            </p>
+        </div>
+
+        <h2 style="color: #128C7E; border-bottom: 2px solid #25D366; padding-bottom: 8px; margin-top: 40px;">🚀 Cara Penggunaan Singkat</h2>
+        <ol style="font-size: 15px; color: #444; padding-left: 20px;">
+            <li>Buka menu <strong>WhatsApp ➔ Konfigurasi Gateway</strong>, masukkan API Token dari dashboard <a href="https://fonnte.com" target="_blank">Fonnte</a>.</li>
+            <li>Klik tombol <strong>Hubungkan (Scan QR)</strong> untuk menautkan perangkat WhatsApp Anda.</li>
+            <li>Buka dokumen mana saja di Odoo (misalnya Quotation/Sales Order), lalu klik tombol <strong>WhatsApp</strong> di panel Chatter.</li>
+            <li>Pilih penerima, isi pesan (atau gunakan template), dan klik <strong>Kirim WhatsApp</strong>.</li>
+        </ol>
+
+        <h2 style="color: #128C7E; border-bottom: 2px solid #25D366; padding-bottom: 8px; margin-top: 40px;">📸 Tampilan Antarmuka (Google Chrome)</h2>
+        <div style="margin: 20px 0; display: flex; flex-direction: column; gap: 20px;">
+            <div>
+                <h4 style="color: #075E54; margin-bottom: 6px;">1. Konfigurasi Gateway &amp; Status Perangkat</h4>
+                <img src="screenshots/01_konfigurasi_gateway.png" style="width: 100%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);"/>
+            </div>
+            <div>
+                <h4 style="color: #075E54; margin-bottom: 6px;">2. Uji Coba Pengiriman &amp; Peringatan Paket Free</h4>
+                <img src="screenshots/02_uji_coba_pengiriman.png" style="width: 100%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);"/>
+            </div>
+            <div>
+                <h4 style="color: #075E54; margin-bottom: 6px;">3. Tombol WhatsApp di Panel Chatter</h4>
+                <img src="screenshots/06_dokumen_sales_chatter.png" style="width: 100%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);"/>
+            </div>
+            <div>
+                <h4 style="color: #075E54; margin-bottom: 6px;">4. Modal Kirim Pesan &amp; Pemilihan Template</h4>
+                <img src="screenshots/07_chatter_whatsapp_wizard.png" style="width: 100%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);"/>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 15px; background: #e8f5e9; border-radius: 8px; border-left: 4px solid #25D366;">
+            <strong>Lisensi:</strong> LGPL-3 (Open Source) &bull; <strong>Dibuat oleh:</strong> Tyr
+        </div>
+    </div>
+
+</body>
+</html>

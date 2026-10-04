@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form_whatsapp_fonnte" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.whatsapp.fonnte</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="70"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <app data-string="WhatsApp Fonnte" string="WhatsApp Fonnte" name="whatsapp_fonnte_suite">
+                        <block title="Pengaturan WhatsApp Gateway" name="fonnte_setting_container">
+                            <setting id="whatsapp_enable_setting" help="Aktifkan atau nonaktifkan pengiriman pesan WhatsApp otomatis ke pelanggan atau pengguna.">
+                                <field name="is_aktifkan_pesan_whatsapp"/>
+                            </setting>
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

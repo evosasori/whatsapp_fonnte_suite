@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="fonnte_validate_wizard_view_form" model="ir.ui.view">
+            <field name="name">fonnte.validate.wizard.view.form</field>
+            <field name="model">fonnte.validate.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Validasi Nomor WhatsApp">
+                    <group>
+                        <group>
+                            <field name="fonnte_config_id" options="{'no_create': True}"/>
+                            <field name="phone_number" placeholder="Contoh: 081234567890"/>
+                        </group>
+                        <group>
+                            <field name="country_code"/>
+                            <field name="result_status" widget="badge" decoration-success="result_status == 'valid'" decoration-danger="result_status == 'invalid'" decoration-muted="result_status == 'pending'"/>
+                        </group>
+                    </group>
+                    <div class="alert alert-light border mt-2" role="alert" invisible="not result_message">
+                        <strong>Keterangan:</strong> <field name="result_message" readonly="1"/>
+                    </div>
+                    <footer>
+                        <button name="action_validate_phone" string="Periksa Nomor" type="object" class="btn-primary" icon="fa-search"/>
+                        <button string="Tutup" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="fonnte_validate_wizard_action" model="ir.actions.act_window">
+            <field name="name">Validasi Nomor WA</field>
+            <field name="res_model">fonnte.validate.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="chatter_whatsapp_wizard_view_form" model="ir.ui.view">
+            <field name="name">chatter.whatsapp.wizard.view.form</field>
+            <field name="model">chatter.whatsapp.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Kirim WhatsApp dari Chatter">
+                    <field name="res_model" invisible="1"/>
+                    <field name="res_id" invisible="1"/>
+                    <field name="status_koneksi" invisible="1"/>
+
+                    <div class="alert alert-warning py-2 mb-3" role="alert" invisible="status_koneksi == 'connected'">
+                        <i class="fa fa-exclamation-triangle me-1"></i>
+                        Status akun WhatsApp: <strong><field name="status_koneksi" readonly="1"/></strong>. Pastikan gateway Fonnte terhubung agar pesan berhasil terkirim.
+                    </div>
+
+                    <group>
+                        <group string="Akun &amp; Penerima">
+                            <field name="fonnte_config_id" options="{'no_create': True}"/>
+                            <field name="user_ids" widget="many2many_tags" placeholder="Pilih user untuk isi otomatis..."/>
+                            <field name="whatsapp_numbers" placeholder="081234567890, 081298765432"/>
+                        </group>
+                        <group string="Pilihan Template &amp; Opsi">
+                            <field name="template_id" options="{'no_create': True}" domain="[('model', '=', res_model)]"/>
+                            <field name="include_doc_link" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+
+                    <group string="Isi Pesan WhatsApp">
+                        <field name="message" nolabel="1" placeholder="Tulis isi pesan yang ingin dikirimkan..."/>
+                    </group>
+
+                    <notebook>
+                        <page string="Lampiran File / Dokumen (Opsional)" name="tab_attachments">
+                            <group>
+                                <group string="Pilih dari Dokumen Ini">
+                                    <field name="attachment_ids" widget="many2many_tags" domain="[('res_model', '=', res_model), ('res_id', '=', res_id)]" options="{'no_create': True}"/>
+                                </group>
+                                <group string="Atau Unggah File Baru">
+                                    <field name="upload_file" filename="upload_filename"/>
+                                    <field name="upload_filename" invisible="not upload_file"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+
+                    <footer>
+                        <button name="action_send_whatsapp" string="Kirim WhatsApp" type="object" class="btn-success" icon="fa-whatsapp"/>
+                        <button string="Batal" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="chatter_whatsapp_wizard_action" model="ir.actions.act_window">
+            <field name="name">Kirim Pesan WhatsApp</field>
+            <field name="res_model">chatter.whatsapp.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

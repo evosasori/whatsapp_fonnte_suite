@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record id="fonnte_configuration_view_tree" model="ir.ui.view">
+            <field name="name">fonnte.configuration.view.tree</field>
+            <field name="model">fonnte.configuration</field>
+            <field name="arch" type="xml">
+                <list decoration-success="status_koneksi == 'connected'" decoration-warning="status_koneksi == 'qr_ready'" decoration-muted="status_koneksi == 'disconnected'">
+                    <field name="name"/>
+                    <field name="device_number"/>
+                    <field name="device_name"/>
+                    <field name="status_koneksi" widget="badge" decoration-success="status_koneksi == 'connected'" decoration-warning="status_koneksi == 'qr_ready'" decoration-danger="status_koneksi == 'disconnected'"/>
+                    <field name="package_quota"/>
+                    <field name="expired_date"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="fonnte_configuration_view_form" model="ir.ui.view">
+            <field name="name">fonnte.configuration.view.form</field>
+            <field name="model">fonnte.configuration</field>
+            <field name="arch" type="xml">
+                <form string="Konfigurasi Fonnte Gateway">
+                    <header>
+                        <button name="action_open_qr_wizard" string="Hubungkan (Scan QR)" type="object" class="btn-primary" icon="fa-qrcode"/>
+                        <button name="action_sync_device" string="Cek Status Perangkat" type="object" class="btn-secondary" icon="fa-refresh"/>
+                        <button name="action_disconnect" string="Putuskan Koneksi" type="object" class="btn-danger" invisible="status_koneksi != 'connected'" confirm="Apakah Anda yakin ingin memutuskan koneksi sesi WhatsApp ini?"/>
+                        <field name="status_koneksi" widget="statusbar" statusbar_visible="disconnected,connected"/>
+                    </header>
+                    <sheet>
+                        <field name="is_aktifkan_pesan_whatsapp" invisible="1"/>
+                        <div class="alert alert-warning text-center" role="alert" invisible="is_aktifkan_pesan_whatsapp">
+                            <strong>Perhatian:</strong> Fitur pengiriman WhatsApp sedang nonaktif secara global. Aktifkan di menu Settings Odoo.
+                        </div>
+
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Contoh: CS Official Fonnte"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group string="Kredensial API Fonnte">
+                                <field name="base_url" placeholder="https://api.fonnte.com"/>
+                                <field name="token" password="True" placeholder="Masukkan API Token dari Fonnte"/>
+                                <field name="session_name" placeholder="Nomor WA Pengirim (opsional)"/>
+                            </group>
+                            <group string="Pengaturan Pengiriman">
+                                <field name="country_code"/>
+                                <field name="delay"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                                <field name="active" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+
+                        <group string="Informasi Perangkat Terhubung">
+                            <group>
+                                <field name="device_number"/>
+                                <field name="device_name"/>
+                                <field name="package_type"/>
+                            </group>
+                            <group>
+                                <field name="package_quota"/>
+                                <field name="expired_date"/>
+                                <field name="is_attachment_supported"/>
+                            </group>
+                            <field name="keterangan" readonly="1"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Uji Coba Pengiriman" name="tab_test_send">
+                                <div class="alert alert-warning mb-3" role="alert" invisible="is_attachment_supported">
+                                    <i class="fa fa-exclamation-triangle me-1"/>
+                                    <strong>Perhatian Fitur Lampiran:</strong> Akun Fonnte Anda saat ini berstatus Paket <strong>Free</strong> (Lampiran Media Tidak Aktif).
+                                    Pesan teks akan tetap terkirim, namun server Fonnte secara otomatis <strong>mengabaikan/tidak mengirimkan file lampiran</strong>.
+                                    Untuk dapat mengirimkan dokumen PDF/Excel/gambar via WhatsApp, Fonnte mewajibkan paket berbayar (Super, Advanced, atau Ultra).
+                                </div>
+                                <group>
+                                    <group>
+                                        <field name="test_target" placeholder="Contoh: 081234567890"/>
+                                        <field name="test_message" placeholder="Tulis pesan pengujian..."/>
+                                    </group>
+                                    <group>
+                                        <field name="test_file" filename="test_filename"/>
+                                        <field name="test_filename" invisible="not test_file"/>
+                                    </group>
+                                </group>
+                                <button name="action_test_send" string="Kirim Pesan Uji Coba" type="object" class="btn-success" icon="fa-paper-plane"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="fonnte_configuration_action" model="ir.actions.act_window">
+            <field name="name">Konfigurasi Gateway</field>
+            <field name="res_model">fonnte.configuration</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Tambahkan akun Fonnte WhatsApp Gateway Anda.
+                </p>
+                <p>
+                    Dapatkan API Token dari dashboard <a href="https://fonnte.com" target="_blank">Fonnte.com</a> untuk mulai mengirim pesan dan notifikasi dari dokumen Odoo.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
