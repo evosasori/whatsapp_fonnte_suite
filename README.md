@@ -138,8 +138,10 @@ Modal pengiriman pesan yang otomatis mendeteksi nomor kontak pelanggan, memilih 
 
 ---
 
-## 📜 Lisensi & Pengembang
+## 📜 Lisensi, Pengembang & Kontak Support
 
 - **Lisensi:** LGPL-3 (GNU Lesser General Public License v3.0)
-- **Kompatibilitas:** Odoo Version 18.0
-- **Dibuat oleh:** Tyr
+- **Kompatibilitas:** Odoo Version 18.0 (Community & Enterprise)
+- **Pengembang:** Tyr (Evosasori)
+- **Email & Dukungan:** [triadisputra123@gmail.com](mailto:triadisputra123@gmail.com)
+- **Repository:** [https://github.com/evosasori/whatsapp_fonnte_suite](https://github.com/evosasori/whatsapp_fonnte_suite)

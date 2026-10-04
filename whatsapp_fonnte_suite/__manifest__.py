@@ -18,6 +18,8 @@ Modul integrasi resmi Fonnte WhatsApp Gateway pada Odoo 18:
 * Mendukung pengiriman file aman melalui direct multipart binary upload (bekerja pada localhost dan server publik).
     """,
     'author': "Tyr",
+    'website': "https://github.com/evosasori/whatsapp_fonnte_suite",
+    'support': "triadisputra123@gmail.com",
     'category': 'Productivity/Discuss',
     'version': '18.0.1.0.0',
     'license': 'LGPL-3',
