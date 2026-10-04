@@ -1,772 +1,188 @@
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap");
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; line-height: 1.6; max-width: 960px; margin: 0 auto; padding: 10px;">
 
-  .donezo-container {
-    --cdn-navy-950: #09131e;
-    --cdn-navy-900: #0f172a;
-    --cdn-navy-800: #1e293b;
-    --cdn-navy-700: #1e3a8a;
-    --cdn-blue-600: #2563eb;
-    --cdn-blue-500: #3b82f6;
-    --cdn-blue-50:  #eff6ff;
-    --cdn-emerald-600: #059669;
-    --cdn-emerald-500: #10b981;
-    --cdn-emerald-50:  #ecfdf5;
-    --cdn-wa-green:    #25D366;
-    --cdn-border:      #e2e8f0;
-    --cdn-card-bg:     #ffffff;
-    --cdn-page-bg:     #f8fafc;
-    --cdn-text-main:   #0f172a;
-    --cdn-text-muted:  #64748b;
-
-    font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: var(--cdn-text-main);
-    background-color: var(--cdn-page-bg);
-    line-height: 1.6;
-    padding: 32px 20px;
-    max-width: 1060px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-  }
-
-  .donezo-container * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* 1. Hero Header Banner (Donezo Navy Dark Hero) */
-  .donezo-container .hero-card {
-    background: linear-gradient(135deg, #091724 0%, #0d282e 50%, #071f18 100%);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 20px;
-    padding: 44px 48px;
-    color: #ffffff;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.45), 0 0 0 1px rgba(37, 211, 102, 0.2);
-  }
-
-  .donezo-container .hero-glow {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(37, 211, 102, 0.25) 0%, rgba(37, 211, 102, 0) 70%);
-    top: -120px;
-    right: -80px;
-    filter: blur(55px);
-    pointer-events: none;
-  }
-
-  .donezo-container .hero-pill-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .donezo-container .hero-badge-pill {
-    background: rgba(37, 211, 102, 0.16);
-    border: 1px solid rgba(37, 211, 102, 0.45);
-    color: #34D399;
-    padding: 5px 14px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-  }
-
-  .donezo-container .hero-badge-pill::before {
-    content: "";
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    background: #25D366;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #25D366;
-  }
-
-  .donezo-container .hero-badge-secondary {
-    background: rgba(255, 255, 255, 0.09);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: #e2e8f0;
-    padding: 5px 14px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .donezo-container .hero-title {
-    font-size: 38px;
-    font-weight: 900;
-    line-height: 1.15;
-    letter-spacing: -0.8px;
-    margin-bottom: 14px;
-    color: #ffffff;
-  }
-
-  .donezo-container .hero-title span {
-    background: linear-gradient(135deg, #25D366 0%, #34D399 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .donezo-container .hero-desc {
-    font-size: 16.5px;
-    color: #cbd5e1;
-    max-width: 820px;
-    line-height: 1.55;
-    font-weight: 500;
-    margin-bottom: 26px;
-  }
-
-  .donezo-container .hero-highlights {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .donezo-container .hero-tag {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 10px;
-    padding: 8px 16px;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: #f1f5f9;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .donezo-container .hero-tag-check {
-    color: #25D366;
-    font-weight: 800;
-  }
-
-  /* 2. Section Headers */
-  .donezo-container .section-header {
-    margin-bottom: 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .donezo-container .section-pretitle {
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--cdn-navy-700);
-  }
-
-  .donezo-container .section-title {
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--cdn-navy-900);
-    letter-spacing: -0.5px;
-  }
-
-  .donezo-container .section-desc {
-    font-size: 14.5px;
-    color: var(--cdn-text-muted);
-  }
-
-  /* 3. Donezo Cards Grid (2x2 Features) */
-  .donezo-container .features-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .donezo-container .feature-card {
-    background: var(--cdn-card-bg);
-    border: 1px solid var(--cdn-border);
-    border-radius: 16px;
-    padding: 26px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-  }
-
-  .donezo-container .feature-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .donezo-container .feature-icon-wrap {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .donezo-container .feature-icon-wrap svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .donezo-container .icon-emerald {
-    background: var(--cdn-emerald-50);
-    border: 1px solid rgba(16, 185, 129, 0.25);
-  }
-  .donezo-container .icon-emerald svg { fill: var(--cdn-emerald-600); }
-
-  .donezo-container .icon-blue {
-    background: var(--cdn-blue-50);
-    border: 1px solid rgba(37, 99, 235, 0.25);
-  }
-  .donezo-container .icon-blue svg { fill: var(--cdn-blue-600); }
-
-  .donezo-container .icon-purple {
-    background: #faf5ff;
-    border: 1px solid rgba(126, 34, 206, 0.25);
-  }
-  .donezo-container .icon-purple svg { fill: #7e22ce; }
-
-  .donezo-container .icon-indigo {
-    background: #eef2ff;
-    border: 1px solid rgba(67, 56, 202, 0.25);
-  }
-  .donezo-container .icon-indigo svg { fill: #4338ca; }
-
-  .donezo-container .feature-pill {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: #f1f5f9;
-    color: #475569;
-    letter-spacing: 0.5px;
-  }
-
-  .donezo-container .feature-card-title {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--cdn-navy-900);
-    line-height: 1.3;
-  }
-
-  .donezo-container .feature-card-desc {
-    font-size: 14.5px;
-    color: var(--cdn-text-muted);
-    line-height: 1.55;
-  }
-
-  /* 4. Workflow Stepper Ribbon */
-  .donezo-container .stepper-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-
-  .donezo-container .step-card {
-    background: var(--cdn-card-bg);
-    border: 1px solid var(--cdn-border);
-    border-radius: 14px;
-    padding: 22px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
-  }
-
-  .donezo-container .step-num-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: var(--cdn-navy-900);
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: 800;
-    border-radius: 999px;
-    margin-bottom: 4px;
-  }
-
-  .donezo-container .step-name {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--cdn-navy-900);
-    line-height: 1.3;
-  }
-
-  .donezo-container .step-desc {
-    font-size: 13px;
-    color: var(--cdn-text-muted);
-    line-height: 1.5;
-  }
-
-  /* 5. Screenshot Showcase (Large Browser Frames) */
-  .donezo-container .screenshots-container {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .donezo-container .screenshot-item {
-    background: var(--cdn-card-bg);
-    border: 1px solid var(--cdn-border);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .donezo-container .screenshot-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #f1f5f9;
-  }
-
-  .donezo-container .screenshot-title-group h4 {
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--cdn-navy-900);
-    margin-bottom: 2px;
-  }
-
-  .donezo-container .screenshot-title-group p {
-    font-size: 13.5px;
-    color: var(--cdn-text-muted);
-  }
-
-  .donezo-container .screenshot-badge {
-    background: var(--cdn-emerald-50);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    color: var(--cdn-emerald-600);
-    padding: 5px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-  .donezo-container .browser-frame {
-    border-radius: 12px;
-    border: 1px solid #cbd5e1;
-    overflow: hidden;
-    box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.12);
-    background: #0f172a;
-  }
-
-  .donezo-container .browser-bar {
-    background: #f1f5f9;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 9px 14px;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-
-  .donezo-container .browser-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
-
-  .donezo-container .dot-red { background: #ef4444; }
-  .donezo-container .dot-yellow { background: #f59e0b; }
-  .donezo-container .dot-green { background: #10b981; }
-
-  .donezo-container .browser-url {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    padding: 3px 12px;
-    font-size: 11.5px;
-    color: #64748b;
-    margin-left: 10px;
-    flex-grow: 1;
-    max-width: 440px;
-    font-family: monospace;
-  }
-
-  .donezo-container .browser-img {
-    width: 100% !important;
-    display: block !important;
-    height: auto !important;
-    border-radius: 0 0 12px 12px;
-  }
-
-  /* 6. Disclaimer Card (Refined Alert) */
-  .donezo-container .disclaimer-card {
-    background: #fffbeb;
-    border: 1px solid #fef3c7;
-    border-left: 5px solid #f59e0b;
-    border-radius: 14px;
-    padding: 24px;
-    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-  }
-
-  .donezo-container .disclaimer-icon {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-    color: #d97706;
-  }
-
-  .donezo-container .disclaimer-icon svg {
-    width: 100%;
-    height: 100%;
-    fill: currentColor;
-  }
-
-  .donezo-container .disclaimer-body h4 {
-    font-size: 16px;
-    font-weight: 800;
-    color: #92400e;
-    margin-bottom: 8px;
-  }
-
-  .donezo-container .disclaimer-body p {
-    font-size: 13.5px;
-    color: #78350f;
-    line-height: 1.55;
-    margin-bottom: 8px;
-  }
-
-  .donezo-container .disclaimer-body p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* 7. Specs Grid (Donezo Specs Summary) */
-  .donezo-container .specs-card {
-    background: var(--cdn-card-bg);
-    border: 1px solid var(--cdn-border);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-  }
-
-  .donezo-container .specs-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 18px;
-  }
-
-  .donezo-container .spec-box {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 14px;
-  }
-
-  .donezo-container .spec-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #64748b;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
-  }
-
-  .donezo-container .spec-value {
-    font-size: 14.5px;
-    font-weight: 800;
-    color: var(--cdn-navy-900);
-  }
-
-  .donezo-container .footer-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 14px;
-    border-top: 1px solid #e2e8f0;
-    font-size: 13px;
-    color: #64748b;
-  }
-
-  @media (max-width: 768px) {
-    .donezo-container .features-grid,
-    .donezo-container .stepper-grid,
-    .donezo-container .specs-grid {
-      grid-template-columns: 1fr;
-    }
-    .donezo-container .hero-card {
-      padding: 28px 24px;
-    }
-    .donezo-container .hero-title {
-      font-size: 28px;
-    }
-  }
-</style>
-
-<div class="donezo-container">
-  <!-- 1. Hero Card -->
-  <div class="hero-card">
-    <div class="hero-glow"></div>
-    <div class="hero-pill-row">
-      <div class="hero-badge-pill">Odoo 18.0 Certified</div>
-      <div class="hero-badge-secondary">Fonnte WhatsApp Gateway</div>
-      <div class="hero-badge-secondary">Zero Core Conflict</div>
+  <!-- Hero Banner -->
+  <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #ffffff; border-radius: 10px; padding: 30px 28px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);">
+    <div style="margin-bottom: 10px;">
+      <span style="background: #059669; color: #ffffff; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-right: 6px;">Odoo 18.0 Ready</span>
+      <span style="background: rgba(255,255,255,0.2); color: #ffffff; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-right: 6px;">Community &amp; Enterprise</span>
+      <span style="background: rgba(255,255,255,0.2); color: #ffffff; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: bold;">Fonnte WhatsApp Gateway</span>
     </div>
-    <h1 class="hero-title">WhatsApp <span>Fonnte Suite</span> &amp; Chatter</h1>
-    <p class="hero-desc">
-      Solusi integrasi WhatsApp terlengkap untuk Odoo 18. Kirim notifikasi transaksi, lampiran PDF faktur &amp; penawaran harga secara instan langsung dari panel Chatter dokumen ERP Anda.
+    <h1 style="font-size: 28px; font-weight: 800; color: #ffffff; margin: 0 0 10px 0;">
+      WhatsApp <span style="color: #25d366;">Fonnte Suite</span> &amp; Chatter
+    </h1>
+    <p style="font-size: 15px; color: #cbd5e1; margin: 0; line-height: 1.5;">
+      Integrasi WhatsApp Gateway untuk Odoo 18. Kirim notifikasi pesan dan lampiran dokumen PDF faktur secara instan langsung dari panel Chatter dokumen ERP Anda.
     </p>
-    <div class="hero-highlights">
-      <div class="hero-tag"><span class="hero-tag-check">&#10003;</span> Tombol WhatsApp di Chatter</div>
-      <div class="hero-tag"><span class="hero-tag-check">&#10003;</span> Kirim Faktur &amp; Dokumen PDF</div>
-      <div class="hero-tag"><span class="hero-tag-check">&#10003;</span> Scan QR Code &amp; Cek Device</div>
-      <div class="hero-tag"><span class="hero-tag-check">&#10003;</span> Template Pesan Dinamis</div>
-    </div>
   </div>
 
-  <!-- 2. Fitur Unggulan (Donezo Grid) -->
-  <div>
-    <div class="section-header">
-      <span class="section-pretitle">Fitur &amp; Kapabilitas</span>
-      <h2 class="section-title">Semua yang Anda Butuhkan untuk Komunikasi Pelanggan</h2>
-      <p class="section-desc">Dirancang sesuai standar Odoo ORM &amp; OWL modern untuk performa tanpa hambatan.</p>
-    </div>
+  <!-- Fitur Utama -->
+  <div style="margin-bottom: 35px;">
+    <h3 style="color: #0f172a; font-size: 20px; font-weight: 700; border-bottom: 2px solid #25d366; padding-bottom: 8px; margin-bottom: 18px;">
+      ✨ Fitur &amp; Keunggulan Utama
+    </h3>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-card-header">
-          <div class="feature-icon-wrap icon-emerald">
-            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
-          </div>
-          <span class="feature-pill">OWL Chatter Patch</span>
-        </div>
-        <h3 class="feature-card-title">Tombol WhatsApp di Panel Chatter</h3>
-        <p class="feature-card-desc">
-          Tombol WhatsApp disematkan langsung di panel Chatter dokumen (Sales Order, Invoice, PO, Stock Picking) tepat di samping tombol Activities. Kirim pesan tanpa perlu membuka tab WhatsApp Web.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-card-header">
-          <div class="feature-icon-wrap icon-blue">
-            <svg viewBox="0 0 24 24"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/></svg>
-          </div>
-          <span class="feature-pill">Direct Binary Upload</span>
-        </div>
-        <h3 class="feature-card-title">Kirim Faktur &amp; Dokumen PDF Otomatis</h3>
-        <p class="feature-card-desc">
-          Mendukung pengiriman file PDF faktur, sales order, atau file gambar langsung dari attachment Odoo menggunakan metode multipart/form-data aman yang berfungsi pada localhost maupun server cloud.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-card-header">
-          <div class="feature-icon-wrap icon-indigo">
-            <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-          </div>
-          <span class="feature-pill">Real-Time Device API</span>
-        </div>
-        <h3 class="feature-card-title">Scan QR Code &amp; Monitor Device</h3>
-        <p class="feature-card-desc">
-          Wizard interaktif untuk meminta dan memindai QR Code WhatsApp langsung dari Odoo. Dilengkapi pemantauan status koneksi, baterai smartphone, sisa kuota, dan masa aktif paket Fonnte secara akurat.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-card-header">
-          <div class="feature-icon-wrap icon-purple">
-            <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
-          </div>
-          <span class="feature-pill">Dynamic Jinja-like</span>
-        </div>
-        <h3 class="feature-card-title">Template Pesan &amp; Variabel Dinamis</h3>
-        <p class="feature-card-desc">
-          Buat template pesan fleksibel untuk setiap model dokumen. Gunakan placeholder dinamis seperti <code>{{self.name}}</code> dan <code>{{self.partner_id.name}}</code> dengan riwayat pesan tercatat otomatis di Chatter.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 3. Alur Penggunaan (Donezo Stepper) -->
-  <div>
-    <div class="section-header">
-      <span class="section-pretitle">Alur Kerja Cepat</span>
-      <h2 class="section-title">Mulai Kirim Pesan dalam 4 Langkah Mudah</h2>
-      <p class="section-desc">Konfigurasi mudah, siap digunakan dalam hitungan menit tanpa setup rumit.</p>
-    </div>
-
-    <div class="stepper-grid">
-      <div class="step-card">
-        <div class="step-num-badge">01</div>
-        <h4 class="step-name">Input API Token</h4>
-        <p class="step-desc">Buka menu WhatsApp &#10132; Konfigurasi Gateway, salin token API dari akun Fonnte Anda.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num-badge">02</div>
-        <h4 class="step-name">Scan QR Code</h4>
-        <p class="step-desc">Klik tombol Hubungkan, pindai QR Code di layar menggunakan WhatsApp smartphone Anda.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num-badge">03</div>
-        <h4 class="step-name">Buka Dokumen</h4>
-        <p class="step-desc">Buka Sales Order atau Faktur apa pun di Odoo, lalu klik tombol WhatsApp di Chatter.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num-badge">04</div>
-        <h4 class="step-name">Kirim Seketika</h4>
-        <p class="step-desc">Pilih template, pastikan lampiran PDF aktif, lalu klik Kirim. Riwayat tersimpan rapi.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 4. Screenshots Showcase -->
-  <div>
-    <div class="section-header">
-      <span class="section-pretitle">Tangkapan Layar</span>
-      <h2 class="section-title">Antarmuka Pengguna Resolusi Tinggi</h2>
-      <p class="section-desc">Visual aplikasi nyata yang diambil langsung dari Google Chrome pada Odoo 18.</p>
-    </div>
-
-    <div class="screenshots-container">
-      <!-- Screenshot 1 -->
-      <div class="screenshot-item">
-        <div class="screenshot-header">
-          <div class="screenshot-title-group">
-            <h4>1. Konfigurasi Gateway &amp; Status Perangkat Fonnte</h4>
-            <p>Pengaturan token API, delay pengiriman, dan pemantauan kuota paket secara terpusat.</p>
-          </div>
-          <span class="screenshot-badge">Settings &amp; Device</span>
-        </div>
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <span class="browser-dot dot-red"></span>
-            <span class="browser-dot dot-yellow"></span>
-            <span class="browser-dot dot-green"></span>
-            <span class="browser-url">odoo.local/odoo/whatsapp/fonnte_configuration</span>
-          </div>
-          <img class="browser-img" src="screenshots/01_konfigurasi_gateway.png" alt="Konfigurasi Gateway"/>
+    <div style="display: flex; flex-wrap: wrap; margin: -8px;">
+      <!-- Card 1 -->
+      <div style="flex: 1 1 45%; min-width: 280px; padding: 8px;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; height: 100%;">
+          <h4 style="font-size: 16px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 8px;">
+            💬 Tombol WhatsApp di Panel Chatter
+          </h4>
+          <p style="font-size: 13.5px; color: #475569; margin: 0;">
+            Tombol WhatsApp disematkan tepat di samping tombol Activities pada form Sales Order, Customer Invoice, Purchase Order, dan Stock Picking untuk memunculkan modal pengiriman pesan instan.
+          </p>
         </div>
       </div>
 
-      <!-- Screenshot 2 -->
-      <div class="screenshot-item">
-        <div class="screenshot-header">
-          <div class="screenshot-title-group">
-            <h4>2. Uji Coba Pengiriman &amp; Peringatan Paket Fonnte</h4>
-            <p>Tes pengiriman pesan langsung dengan deteksi otomatis kapabilitas lampiran akun Free/Super/Ultra.</p>
-          </div>
-          <span class="screenshot-badge">Live Testing</span>
-        </div>
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <span class="browser-dot dot-red"></span>
-            <span class="browser-dot dot-yellow"></span>
-            <span class="browser-dot dot-green"></span>
-            <span class="browser-url">odoo.local/odoo/whatsapp/test_send</span>
-          </div>
-          <img class="browser-img" src="screenshots/02_uji_coba_pengiriman.png" alt="Uji Coba Pengiriman"/>
+      <!-- Card 2 -->
+      <div style="flex: 1 1 45%; min-width: 280px; padding: 8px;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; height: 100%;">
+          <h4 style="font-size: 16px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 8px;">
+            📎 Kirim Lampiran PDF &amp; Gambar
+          </h4>
+          <p style="font-size: 13.5px; color: #475569; margin: 0;">
+            Kirim file PDF faktur, penawaran harga, atau dokumen gambar langsung ke WhatsApp pelanggan via direct multipart binary upload yang bekerja di localhost maupun server cloud.
+          </p>
         </div>
       </div>
 
-      <!-- Screenshot 3 -->
-      <div class="screenshot-item">
-        <div class="screenshot-header">
-          <div class="screenshot-title-group">
-            <h4>3. Integrasi Tombol WhatsApp di Panel Chatter Odoo 18</h4>
-            <p>Tombol WhatsApp terintegrasi mulus di samping Activities dengan pencatatan riwayat pesan terkirim.</p>
-          </div>
-          <span class="screenshot-badge">Chatter Integration</span>
-        </div>
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <span class="browser-dot dot-red"></span>
-            <span class="browser-dot dot-yellow"></span>
-            <span class="browser-dot dot-green"></span>
-            <span class="browser-url">odoo.local/odoo/sales/SO0042</span>
-          </div>
-          <img class="browser-img" src="screenshots/06_dokumen_sales_chatter.png" alt="Chatter Dokumen Sales"/>
+      <!-- Card 3 -->
+      <div style="flex: 1 1 45%; min-width: 280px; padding: 8px;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; height: 100%;">
+          <h4 style="font-size: 16px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 8px;">
+            📱 Scan QR Code &amp; Monitor Device
+          </h4>
+          <p style="font-size: 13.5px; color: #475569; margin: 0;">
+            Wizard interaktif untuk scan QR Code langsung dari Odoo. Pantau status koneksi perangkat, baterai smartphone, sisa kuota, dan masa aktif paket Fonnte secara real-time.
+          </p>
         </div>
       </div>
 
-      <!-- Screenshot 4 -->
-      <div class="screenshot-item">
-        <div class="screenshot-header">
-          <div class="screenshot-title-group">
-            <h4>4. Modal Pop-up Kirim Pesan &amp; Lampiran Dokumen</h4>
-            <p>Deteksi otomatis nomor kontak pelanggan, pemilihan template dinamis, dan lampiran PDF faktur.</p>
-          </div>
-          <span class="screenshot-badge">Message Modal</span>
-        </div>
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <span class="browser-dot dot-red"></span>
-            <span class="browser-dot dot-yellow"></span>
-            <span class="browser-dot dot-green"></span>
-            <span class="browser-url">odoo.local/odoo/wizard/chatter_whatsapp_wizard</span>
-          </div>
-          <img class="browser-img" src="screenshots/07_chatter_whatsapp_wizard.png" alt="Modal WhatsApp Wizard"/>
+      <!-- Card 4 -->
+      <div style="flex: 1 1 45%; min-width: 280px; padding: 8px;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; height: 100%;">
+          <h4 style="font-size: 16px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 8px;">
+            ⚡ Template Dinamis &amp; Log Chatter
+          </h4>
+          <p style="font-size: 13.5px; color: #475569; margin: 0;">
+            Dukung variabel dinamis Odoo seperti <code>{{self.name}}</code> dan <code>{{self.partner_id.name}}</code>. Seluruh pesan yang terkirim otomatis dicatat ke riwayat timeline Chatter.
+          </p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 5. Disclaimer Card -->
-  <div class="disclaimer-card">
-    <div class="disclaimer-icon">
-      <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
-    </div>
-    <div class="disclaimer-body">
-      <h4>Sanggahan &amp; Kebijakan Anti-Spam (Unofficial WhatsApp API)</h4>
-      <p>
-        Modul ini menggunakan layanan gateway pihak ketiga tidak resmi (<em>Unofficial API via Fonnte.com</em>) dan tidak terafiliasi dengan Meta Inc. Pengembang modul <strong>TIDAK BERTANGGUNG JAWAB</strong> atas segala bentuk pembatasan, pemblokiran nomor (<em>banned / suspend</em>), atau laporan spam yang ditimbulkan akibat penggunaan nomor Anda.
+  <!-- Panduan Penggunaan -->
+  <div style="margin-bottom: 35px;">
+    <h3 style="color: #0f172a; font-size: 20px; font-weight: 700; border-bottom: 2px solid #25d366; padding-bottom: 8px; margin-bottom: 18px;">
+      🚀 Panduan Penggunaan Singkat
+    </h3>
+    <ol style="font-size: 14.5px; color: #334155; padding-left: 20px; margin: 0;">
+      <li style="margin-bottom: 8px;">
+        Buka menu <strong>WhatsApp ➔ Konfigurasi Gateway</strong>, lalu masukkan API Token dari dashboard <a href="https://fonnte.com" target="_blank" style="color: #1e3a8a; text-decoration: underline;">Fonnte.com</a>.
+      </li>
+      <li style="margin-bottom: 8px;">
+        Klik tombol <strong>Hubungkan (Scan QR)</strong> untuk menautkan nomor WhatsApp Anda.
+      </li>
+      <li style="margin-bottom: 8px;">
+        Buka dokumen mana saja di Odoo (misal Sales Order atau Faktur Pelanggan), lalu klik tombol <strong>WhatsApp</strong> di samping tombol Activities pada panel Chatter.
+      </li>
+      <li style="margin-bottom: 8px;">
+        Pilih nomor penerima, tentukan template pesan dan lampiran PDF, lalu klik <strong>Kirim WhatsApp</strong>. Pesan akan terkirim dan tercatat di timeline dokumen.
+      </li>
+    </ol>
+  </div>
+
+  <!-- Tangkapan Layar (Screenshots) -->
+  <div style="margin-bottom: 35px;">
+    <h3 style="color: #0f172a; font-size: 20px; font-weight: 700; border-bottom: 2px solid #25d366; padding-bottom: 8px; margin-bottom: 20px;">
+      📷 Tangkapan Layar Antarmuka
+    </h3>
+
+    <!-- Screenshot 1 -->
+    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+      <h4 style="font-size: 15px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 4px;">
+        1. Konfigurasi Gateway &amp; Status Perangkat Fonnte
+      </h4>
+      <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">
+        Pengaturan token API, delay pengiriman pesan, serta monitoring kuota dan masa aktif paket Fonnte.
       </p>
-      <p>
-        Pengguna bertanggung jawab penuh mematuhi ketentuan perundang-undangan dan etika komunikasi bisnis. Dilarang keras melakukan pesan massal tanpa persetujuan penerima (<em>opt-in</em>).
+      <img src="screenshots/01_konfigurasi_gateway.png" alt="Konfigurasi Gateway" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 6px; display: block;"/>
+    </div>
+
+    <!-- Screenshot 2 -->
+    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+      <h4 style="font-size: 15px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 4px;">
+        2. Uji Coba Pengiriman &amp; Peringatan Paket Fonnte
+      </h4>
+      <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">
+        Fitur uji coba kirim pesan dan deteksi otomatis kapabilitas paket Free / Super / Ultra untuk pengiriman lampiran media.
       </p>
+      <img src="screenshots/02_uji_coba_pengiriman.png" alt="Uji Coba Pengiriman" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 6px; display: block;"/>
+    </div>
+
+    <!-- Screenshot 3 -->
+    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+      <h4 style="font-size: 15px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 4px;">
+        3. Integrasi Tombol WhatsApp di Panel Chatter Odoo 18
+      </h4>
+      <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">
+        Tombol WhatsApp terletak di panel Chatter dokumen transaksi (Quotation / Sales Order) dengan pencatatan log pesan terkirim.
+      </p>
+      <img src="screenshots/06_dokumen_sales_chatter.png" alt="Chatter Dokumen Sales" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 6px; display: block;"/>
+    </div>
+
+    <!-- Screenshot 4 -->
+    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+      <h4 style="font-size: 15px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 4px;">
+        4. Modal Pop-up Kirim Pesan &amp; Lampiran PDF
+      </h4>
+      <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">
+        Modal wizard pengiriman pesan interaktif: deteksi otomatis nomor kontak pelanggan, pemilihan template, dan lampiran PDF faktur.
+      </p>
+      <img src="screenshots/07_chatter_whatsapp_wizard.png" alt="Modal WhatsApp Wizard" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 6px; display: block;"/>
     </div>
   </div>
 
-  <!-- 6. Spesifikasi Sistem & Kontak Support -->
-  <div class="specs-card">
-    <div class="specs-grid" style="grid-template-columns: repeat(5, 1fr);">
-      <div class="spec-box">
-        <div class="spec-label">Versi Odoo</div>
-        <div class="spec-value">18.0 (CE &amp; EE)</div>
+  <!-- Sanggahan / Disclaimer Anti-Spam -->
+  <div style="background: #fffbeb; border: 1px solid #fef3c7; border-left: 5px solid #f59e0b; border-radius: 8px; padding: 18px 20px; margin-bottom: 30px;">
+    <h4 style="font-size: 15px; font-weight: 700; color: #92400e; margin-top: 0; margin-bottom: 8px;">
+      ⚠️ Sanggahan &amp; Kebijakan Anti-Spam (Unofficial WhatsApp API)
+    </h4>
+    <p style="font-size: 13.5px; color: #78350f; line-height: 1.55; margin-bottom: 8px;">
+      Modul ini menggunakan layanan gateway pihak ketiga tidak resmi (<em>Unofficial API via Fonnte.com</em>) dan tidak terafiliasi dengan Meta Inc. Pengembang modul <strong>TIDAK BERTANGGUNG JAWAB</strong> atas segala bentuk pembatasan, pemblokiran nomor (<em>banned / suspend</em>), atau laporan spam yang ditimbulkan akibat penggunaan nomor Anda.
+    </p>
+    <p style="font-size: 13.5px; color: #78350f; line-height: 1.55; margin: 0;">
+      Pengguna bertanggung jawab penuh mematuhi ketentuan perundang-undangan dan etika komunikasi bisnis. Dilarang keras melakukan pesan massal tanpa persetujuan penerima (<em>opt-in</em>).
+    </p>
+  </div>
+
+  <!-- Spesifikasi & Kontak Support -->
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+    <div style="display: flex; flex-wrap: wrap; margin-bottom: 14px;">
+      <div style="flex: 1 1 22%; min-width: 160px; margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #64748b;">Versi Odoo</div>
+        <div style="font-size: 14px; font-weight: bold; color: #0f172a;">18.0 (CE &amp; EE)</div>
       </div>
-      <div class="spec-box">
-        <div class="spec-label">Dependensi</div>
-        <div class="spec-value">base, mail (Core)</div>
+      <div style="flex: 1 1 22%; min-width: 160px; margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #64748b;">Dependensi</div>
+        <div style="font-size: 14px; font-weight: bold; color: #0f172a;">base, mail (Core)</div>
       </div>
-      <div class="spec-box">
-        <div class="spec-label">Lisensi</div>
-        <div class="spec-value">LGPL-3 (Open Source)</div>
+      <div style="flex: 1 1 22%; min-width: 160px; margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #64748b;">Lisensi</div>
+        <div style="font-size: 14px; font-weight: bold; color: #0f172a;">LGPL-3 (Open Source)</div>
       </div>
-      <div class="spec-box">
-        <div class="spec-label">Gateway API</div>
-        <div class="spec-value">Fonnte Gateway</div>
-      </div>
-      <div class="spec-box" style="background: #eff6ff; border-color: #bfdbfe;">
-        <div class="spec-label" style="color: #1e40af;">Email &amp; Support</div>
-        <div class="spec-value" style="font-size: 12.5px;"><a href="mailto:triadisputra123@gmail.com" style="color: #1d4ed8; text-decoration: none; word-break: break-all;">triadisputra123@gmail.com</a></div>
+      <div style="flex: 1 1 22%; min-width: 160px; margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #1d4ed8;">Email &amp; Support</div>
+        <div style="font-size: 13.5px; font-weight: bold; color: #1d4ed8;">
+          <a href="mailto:triadisputra123@gmail.com" style="color: #1d4ed8; text-decoration: none;">triadisputra123@gmail.com</a>
+        </div>
       </div>
     </div>
-    <div class="footer-row">
-      <span>Dibuat oleh <strong>Tyr (Evosasori)</strong> &bull; Dukungan: <a href="mailto:triadisputra123@gmail.com" style="color: #1d4ed8; font-weight: 700; text-decoration: none;">triadisputra123@gmail.com</a></span>
-      <span>GitHub Repository: <a href="https://github.com/evosasori/whatsapp_fonnte_suite" target="_blank" style="color: #0f172a; text-decoration: none; font-weight: 700;">@evosasori</a></span>
+    <div style="border-top: 1px solid #e2e8f0; padding-top: 10px; font-size: 13px; color: #64748b; display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <span>Dibuat oleh <strong>Tyr (Evosasori)</strong> &bull; Dukungan: <a href="mailto:triadisputra123@gmail.com" style="color: #1d4ed8; text-decoration: none; font-weight: bold;">triadisputra123@gmail.com</a></span>
+      <span>GitHub Repository: <a href="https://github.com/evosasori/whatsapp_fonnte_suite" target="_blank" style="color: #0f172a; text-decoration: none; font-weight: bold;">@evosasori</a></span>
     </div>
   </div>
+
 </div>
